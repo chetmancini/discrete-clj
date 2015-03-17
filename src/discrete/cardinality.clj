@@ -1,4 +1,5 @@
-(ns discrete.cardinality)
+(ns discrete.cardinality
+  (:require [clojure.math.numeric-tower :as math]))
 
 (defn find-room [bus-num seat-num]
   (let [next-pair (fn [[a b]]
@@ -26,3 +27,7 @@
                                  (recur (+ 1 i) (next-pair current-pair))
                                  current-pair))]
     (find-bus-seat-helper 1 [1 1])))
+
+(defn cantor-diagonal [n]
+  (let []))
+
