@@ -1,17 +1,21 @@
 (ns discrete.relation
   (:require [discrete.utils :refer :all]))
 
-(defn test-one-pair [[a b] relations]
-  (if (empty? relations)
+(defn is-related-to? [a b relation]
+  (in? relation [a b]))
+
+(defn transitive-test-one-pair [[a b] relation]
+  (if (empty? relation)
     true
-    :else true))
-    ;testOnePair((a, b), (c, d)::rest) =
-	;((not (b = c)) orelse isRelatedTo(a, d, relation)) andalso testOnePair((a,b), rest)))
+    (let [[c d] (first relation)] 
+      (and (or (not= b c) (is-related-to a d relation)) 
+           (recur [a b] (rest relation))))))
 
-(defn test-all []) 
+(defn is-transitive? [relation]
+  (if (empty? relation)
+    true
+    (and (transitive-test-one-pair (first relation) relation) (recur (rest relation)))))
  
-(defn is-related-to [a b relations])
-
 (defn image [element relation]
   [])
 
