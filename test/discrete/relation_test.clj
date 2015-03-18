@@ -8,14 +8,17 @@
 
 (deftest is-related-to-test
   (testing "relations work"
+    (is (not (is-related-to? :foo :bar #{})))
     (is (is-related-to? :two :bar #{[:one :foo] [:two :bar]}))))
 
 (deftest transitive-test-one-pair-test
   (testing "one-pair works"
+    (is (transitive-test-one-pair [:a :b] []))
     (is (transitive-test-one-pair [:mediterranean :jordan] water-west-of))))
 
 (deftest is-transitive-test
   (testing "transitivity calc works"
+    (is (is-transitive? []))
     (is (is-transitive? water-west-of))))
 
 (deftest add-image-test

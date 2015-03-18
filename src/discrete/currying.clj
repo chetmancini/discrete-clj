@@ -1,6 +1,5 @@
 (ns discrete.currying)
 
-
 (defn multiply [x y]
   (* x y))
 

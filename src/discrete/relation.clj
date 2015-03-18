@@ -29,7 +29,7 @@
   [])
 
 (defn transitive-closure [relation]
-  (if (is-transitive relation)
+  (if (is-transitive? relation)
     relation
     (recur (into (distinct (counter-transitive relation)) relation))))
 
