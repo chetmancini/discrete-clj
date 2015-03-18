@@ -12,6 +12,10 @@ How do we think about the cardinality of infinite sets?
 
 Examples are shown in simple recusive solutions as well as leveraging Clojure's math.combinatorics library.
 
+### Currying
+
+Clojure doesn't have built-in currying, but we can show how to reduce function arity.
+
 ### Graphs
 
 Much of computer science involves modeling data as a graph, and some of the most elegant algorithms traverse and analyze graphs in creative ways. Discrete-Clj uses the excellent Loom library to demonstrate usage rather than rolling our own.
