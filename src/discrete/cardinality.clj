@@ -38,13 +38,7 @@
                        (and (= b 1) (= 0 (mod a 2))) [(+ a 1) 1]
                        (= 1 (mod (+ a b) 2)) [(+ a 1) (- b 1)]
                        :else [(- a 1) (+ b 1)]))
-        contains-ratio? (fn [[a b] in-list]
-                          (if (empty? in-list)
-                            false
-                            (let [[c d] (first in-list)]
-                              (if (and (= a c) (= b d))
-                                true
-                                (recur [a b] (rest in-list))))))
+        contains-ratio? (fn [ratio in-list] (some #(= ratio %) in-list))
         next-new-ratio (fn [old-ratio used-list]
                          (let [new-ratio (next-ratio old-ratio)]
                            (if (contains-ratio? (reduce-by-gcd new-ratio) used-list)
