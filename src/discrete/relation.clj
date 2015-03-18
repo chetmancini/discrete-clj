@@ -1,7 +1,9 @@
 (ns discrete.relation
   (:require [discrete.utils :refer :all]))
 
-(defn is-related-to? [a b relation]
+(defn is-related-to? 
+  "Is this pair contained in this relation?"
+  [a b relation]
   (in? relation [a b]))
 
 (defn transitive-test-one-pair [[a b] relation]
@@ -11,22 +13,29 @@
       (and (or (not= b c) (is-related-to? a d relation)) 
            (recur [a b] (rest relation))))))
 
-(defn is-transitive? [relation]
+(defn is-transitive? 
+  "Is this relation transitive?"
+  [relation]
   (if (empty? relation)
     true
     (and (transitive-test-one-pair (first relation) relation) (recur (rest relation)))))
  
-(defn image [element relation]
-  [])
+(defn image 
+  "takes an element and a relation and returns the image of the element over the relation"
+  [element relation]
+  (map (fn [[a b]] b) (filter (fn [[a b]] (= a element)) relation)))
 
-(defn add-image [element relation-set]
-  (add-to-all element relation-set))
+(defn add-image 
+  "takes an element (x) and a set and returns a relation R with 
+  the property that the image of x under R is the set"
+  [element relation-set]
+  (map #([element %]) relation-set))
 
 (defn compose [relation-a relation-b]
-  [])
+  nil)
 
 (defn counter-transitive [relation]
-  [])
+  nil)
 
 (defn transitive-closure [relation]
   (if (is-transitive? relation)

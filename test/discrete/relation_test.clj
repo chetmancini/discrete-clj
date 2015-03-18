@@ -21,9 +21,13 @@
     (is (is-transitive? []))
     (is (is-transitive? water-west-of))))
 
+(deftest image-test
+  (testing "image on relation"
+    (is (= [1 3] (image 5 [[5 1] [2 2] [5 3]])))))
+
 (deftest add-image-test
   (testing "add image"
-    (is (= [[5] [5 4] [5 2 3]] (add-image 5 [[] [4] [2 3]])))))
+    (is (= [[5 1] [5 2] [5 3]] (add-image 5 [1 2 3])))))
 
 (deftest compose-test
   (testing "compose two relations"))

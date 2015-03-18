@@ -1,6 +1,8 @@
 (ns discrete.function)
 
-(defn list-to-fn [items]
+(defn list-to-fn 
+  "Convert a list to a function"
+  [items]
   (fn [n] (nth items n)))
 
 (defn compose 
