@@ -1,0 +1,2 @@
+#{[:mediterranean :chinnereth] [:mediterranean :jordan] [:mediterranean :dead]
+[:mediterranean :jabbok] [:mediterranean :arnon] [:chinnereth :jabbok] [:chinnereth :arnon] [:jordan :jabbok] [:jordan :arnon] [:dead :jabbok] [:dead :arnon]}
