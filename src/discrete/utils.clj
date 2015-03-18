@@ -5,3 +5,4 @@
 
 (defn add-to-all [item values]
   (map #(cons item %) values))
+
