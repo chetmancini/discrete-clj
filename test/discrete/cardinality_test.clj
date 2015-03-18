@@ -8,9 +8,14 @@
     (is (= 8 (find-room 2 3)))
     (is (= 15 (find-room 1 5)))))
 
-
 (deftest find-bus-seat-test
   (testing "find bus seat calculates the inverse"
     (is (= [1 1] (find-bus-seat 1)))
     (is (= [2 3] (find-bus-seat 8)))
     (is (= [1 5] (find-bus-seat 15)))))
+
+(deftest cantor-diagonal-test
+  (testing "finds the cantor diagonal"
+    (is (= [1 1] (cantor-diagonal 1)))
+    (is (= [2 1] (cantor-diagonal 3)))
+    (is (= [3 2] (cantor-diagonal 8)))))
