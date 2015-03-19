@@ -34,7 +34,11 @@
 
 (deftest divide-test
   (testing "division"
-    (is (= (as-peano-number 2) (divide (as-peano-number 6) (as-peano-number 3))))))
+    (is (= (as-peano-number 2) (divide (as-peano-number 6) (as-peano-number 3))))))\
+
+(deftest modulo-test
+  (testing "modulus"
+    (is (= (as-peano-number 2) (modulo (as-peano-number 17) (as-peano-number 5))))))
 
 (deftest is-even-test
   (testing "is even"

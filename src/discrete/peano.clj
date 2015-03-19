@@ -84,6 +84,14 @@
                           :else (recur (minus a b) b (one-plus current))))]
     (divide-helper p1 p2 zero)))
 
+(defn modulo
+  "Modulo on peano numbers"
+  [p1 p2]
+  (cond
+    (=? p1 p2) zero
+    (<? p1 p2) p1
+    :else (recur (minus p1 p2) p2)))
+
 (defn is-even?
   "Even checking on peano numbers"
   [peano]
