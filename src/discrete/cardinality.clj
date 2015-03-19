@@ -9,7 +9,9 @@
     (= 1 (mod (+ a b) 2)) [(+ a 1) (- b 1)]
     :else [(- a 1) (+ b 1)]))
 
-(defn find-room [bus-num seat-num]
+(defn find-room 
+  "For a given bus number and seat number, which room in the hotel should they be assigned?"
+  [bus-num seat-num]
   (let [find-room-helper (fn [i current-pair]
                            (if (not= current-pair [bus-num seat-num])
                              (recur (+ i 1) (next-pair current-pair))
@@ -17,7 +19,9 @@
     (find-room-helper 1 [1 1])))
 
 
-(defn find-bus-seat [room]
+(defn find-bus-seat
+  "Given a room, which bus and which seat should they get?"
+  [room]
   (let [find-bus-seat-helper (fn [i current-pair]
                                (if (not= i room)
                                  (recur (+ 1 i) (next-pair current-pair))
