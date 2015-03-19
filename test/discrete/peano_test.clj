@@ -20,3 +20,14 @@
   (testing "converts a peano number to an integer"
     	(is (= (as-integer [:one-plus :one-plus :zero]) 2))))
 
+(deftest minus-test
+  (testing "subtraction"
+    (is (= (as-peano-number 1) (minus (as-peano-number 3) (as-peano-number 2))))))
+
+(deftest plus-test
+  (testing "addition"
+    (is (= (as-peano-number 5) (plus (as-peano-number 2) (as-peano-number 3))))))
+
+(deftest multiply-test
+  (testing "multiplication"
+    (is (= (as-peano-number 6) (multiply (as-peano-number 2) (as-peano-number 3))))))
