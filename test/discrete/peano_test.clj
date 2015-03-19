@@ -31,3 +31,14 @@
 (deftest multiply-test
   (testing "multiplication"
     (is (= (as-peano-number 6) (multiply (as-peano-number 2) (as-peano-number 3))))))
+
+(deftest divide-test
+  (testing "division"
+    (is (= (as-peano-number 2) (divide (as-peano-number 6) (as-peano-number 3))))))
+
+(deftest is-even-test
+  (testing "is even"
+    (is (is-even? (as-peano-number 0)))
+    (is (is-even? (as-peano-number 6)))
+    (is (not (is-even? (as-peano-number 5))))))
+

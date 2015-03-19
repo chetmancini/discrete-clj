@@ -36,12 +36,22 @@
     (= zero p2) false
     :else (<=? (one-minus p1) (one-minus p2))))
 
+(defn <?
+  "Less than for peano numbers"
+  [p1 p2]
+  (cond
+    (= zero p1 p2) false
+    (= zero p1) true
+    (= zero p2) false
+    :else (<? (one-minus p1) (one-minus p2))))
+
 (defn =? 
   "Equals for peano numbers"
   [p1 p2]
-  (if (= zero p1 p2)
-    true
-    (=? (one-minus p1) (one-minus p2))))
+  (cond
+    (= zero p1 p2) true
+    (or (= zero p1) (= zero p2)) false
+    :else (=? (one-minus p1) (one-minus p2))))
 
 (defn minus 
   "Subtraction for peano numbers"
@@ -64,8 +74,15 @@
     zero
     (plus p1 (multiply p1 (one-minus p2)))))
 
-(defn divide [p1 p2]
-  ())
+(defn divide
+  "Division on peano numbers"
+  [p1 p2]
+  (let [divide-helper (fn [a b current]
+                        (cond 
+                          (<? a b) current
+                          (=? a b) (one-plus current)
+                          :else (recur (minus a b) b (one-plus current))))]
+    (divide-helper p1 p2 zero)))
 
 (defn is-even?
   "Even checking on peano numbers"
