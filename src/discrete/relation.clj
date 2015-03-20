@@ -59,7 +59,12 @@
         false))))
 
 (defn is-anti-symmetric? [relation]
-  true)
+  (if (empty? relation)
+    true
+    (let [[a b] (first relation)]
+      (if (and (in? relation [b a]) (not= b a))
+        false
+        (recur (rest relation))))))
 
 (defn is-reflexive? [relation]
   (if (empty? relation)

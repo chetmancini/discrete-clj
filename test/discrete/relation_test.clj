@@ -44,11 +44,15 @@
 (deftest is-symmetric-test
   (testing "return if relation is symmetric"
     (is (is-symmetric? []))
+    (is (is-symmetric? [[1 1]]))
     (is (not (is-symmetric? [[1 2] [2 3] [1 1]])))
     (is (is-symmetric? [[1 2] [2 1] [1 1]]))))
 
 (deftest is-anti-symmetric-test
-  (testing "return if relation is antisymmetric"))
+  (testing "return if relation is antisymmetric"
+    (is (is-anti-symmetric? [[1 3] [1 1]]))
+    (is (is-anti-symmetric? []))
+    (is (not (is-anti-symmetric? [[1 2] [2 1] [1 1]])))))
 
 (deftest is-reflexive-test
   (testing "return if a relation is reflexive"
