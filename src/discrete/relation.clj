@@ -10,7 +10,7 @@
   (if (empty? relation)
     true
     (let [[c d] (first relation)]
-      (and (or (not= b c) (is-related-to? a d relation)) 
+      (and (or (not= b c) (is-related-to? a d relation))
            (recur [a b] (rest relation))))))
 
 (defn is-transitive? 
@@ -51,13 +51,23 @@
   (fn [a b] (or (= a b) (relation-fn a b))))
 
 (defn is-symmetric? [relation]
-  true)
+  (if (empty? relation)
+    true
+    (let [[a b] (first relation)]
+      (if (in? relation [b a])
+        (recur (rest relation))
+        false))))
 
 (defn is-anti-symmetric? [relation]
   true)
 
 (defn is-reflexive? [relation]
-  true)
+  (if (empty? relation)
+    true
+    (let [[a b] (first relation)]
+      (if (and (in? relation [a a]) (in? relation [b b]))
+        (recur (rest relation))
+        false))))
 
 (defn counter-symmetric [relation]
   [])

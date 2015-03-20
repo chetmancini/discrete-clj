@@ -42,13 +42,19 @@
   (testing "returns the transitive closure"))
 
 (deftest is-symmetric-test
-  (testing "return if relation is symmetric"))
+  (testing "return if relation is symmetric"
+    (is (is-symmetric? []))
+    (is (not (is-symmetric? [[1 2] [2 3] [1 1]])))
+    (is (is-symmetric? [[1 2] [2 1] [1 1]]))))
 
 (deftest is-anti-symmetric-test
   (testing "return if relation is antisymmetric"))
 
 (deftest is-reflexive-test
-  (testing "return if a relation is reflexive"))
+  (testing "return if a relation is reflexive"
+    (is (is-reflexive? []))
+    (is (not (is-reflexive? [[1 2] [2 3] [1 1]])))
+    (is (is-reflexive? [[1 2] [2 3] [1 1] [2 2] [3 3]]))))
 
 (deftest counter-symmetric-test
   (testing "counter symmetric"))
