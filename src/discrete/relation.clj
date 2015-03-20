@@ -29,10 +29,10 @@
   "takes an element (x) and a set and returns a relation R with 
   the property that the image of x under R is the set"
   [element relation-set]
-  (map #([element %]) relation-set))
+  (add-to-all element (listify relation-set)))
 
-(defn compose [relation-a relation-b]
-  nil)
+(defn compose [relation-ab relation-bc]
+  (mapcat (fn [[a b]] (add-image a (image b relation-bc))) relation-ab))
 
 (defn counter-transitive [relation]
   nil)

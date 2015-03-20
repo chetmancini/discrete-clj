@@ -1,12 +1,6 @@
 (ns discrete.combinatorics
   (:require [clojure.math.combinatorics :as combo]))
 
-(defn listify [values]
-  (map #(list %) values))
-
-(defn add-to-all [item values]
-  [])
-
 ; (defn combos [values r]
 ;   (cond
 ;     (empty? values) []

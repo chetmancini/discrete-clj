@@ -30,7 +30,10 @@
     (is (= [[5 1] [5 2] [5 3]] (add-image 5 [1 2 3])))))
 
 (deftest compose-test
-  (testing "compose two relations"))
+  (testing "compose two relations"
+    (is (= [] (compose [] [[1 2]])))
+    (is (= [] (compose [[1 2]] [])))
+    (is (= [[1 6] [1 5] [3 5] [1 5]] (compose [[1 2] [3 4] [1 4]] [[2 6] [2 5] [4 5]])))))
 
 (deftest counter-transitive-test
   (testing "counter transitive"))
