@@ -31,7 +31,9 @@
   [element relation-set]
   (add-to-all element (listify relation-set)))
 
-(defn compose [relation-ab relation-bc]
+(defn compose
+  "Componse two relations."
+  [relation-ab relation-bc]
   (mapcat (fn [[a b]] (add-image a (image b relation-bc))) relation-ab))
 
 (defn counter-transitive [relation]
