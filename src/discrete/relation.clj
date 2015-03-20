@@ -50,29 +50,20 @@
 (defn reflexive-closure [relation-fn]
   (fn [a b] (or (= a b) (relation-fn a b))))
 
-(defn is-symmetric? [relation]
-  (if (empty? relation)
-    true
-    (let [[a b] (first relation)]
-      (if (in? relation [b a])
-        (recur (rest relation))
-        false))))
+(defn is-symmetric? 
+  "If [a b] is in a relation, [b a] is in the relation."
+  [relation]
+  (every? (fn [[a b]] (in? relation [b a])) relation))
 
-(defn is-anti-symmetric? [relation]
-  (if (empty? relation)
-    true
-    (let [[a b] (first relation)]
-      (if (and (in? relation [b a]) (not= b a))
-        false
-        (recur (rest relation))))))
+(defn is-anti-symmetric?
+  "If [a b] is in a relation, [b a] is NOT in the relation unless a=b."
+  [relation]
+  (every? (fn [[a b]] (or (= a b) (not (in? relation [b a])))) relation))
 
-(defn is-reflexive? [relation]
-  (if (empty? relation)
-    true
-    (let [[a b] (first relation)]
-      (if (and (in? relation [a a]) (in? relation [b b]))
-        (recur (rest relation))
-        false))))
+(defn is-reflexive? 
+  "If [a b] is in a relation, [a a] and [b b] are in the relation."
+  [relation]
+  (every? (fn [[a b]] (and (in? relation [a a]) (in? relation [b b]))) relation))
 
 (defn counter-symmetric [relation]
   [])
