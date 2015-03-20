@@ -44,7 +44,9 @@
     relation
     (recur (into (distinct (counter-transitive relation)) relation))))
 
-(defn list-to-predicate [relation]
+(defn list-to-predicate 
+  "Return a function that returns if a is related to b in a relation."
+  [relation]
   (fn [a b] (is-related-to? a b relation)))
 
 (defn reflexive-closure [relation-fn]
@@ -65,9 +67,13 @@
   [relation]
   (every? (fn [[a b]] (and (in? relation [a a]) (in? relation [b b]))) relation))
 
-(defn counter-symmetric [relation]
+(defn counter-symmetric
+  "Return the counterexamples of symmetry"
+  [relation]
   [])
 
-(defn counter-anti-symmetric [relation]
+(defn counter-anti-symmetric
+  "Return the counter examples to anti-symmetry"
+  [relation]
   [])
 
