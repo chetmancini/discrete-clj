@@ -1,13 +1,13 @@
 (ns discrete.quantification)
 
-(defn all-have-divisor? [input-list divisor]
+(defn all-have-divisor? [input-list yy]
   (if (empty? input-list)
     true
-    (let [has-divisor? (fn [input]
-                        (if (empty? input)
+    (let [has-divisor? (fn [second-list]
+                        (if (empty? second-list)
                           false
-                          (if (= 0 (mod (first input-list) (first input)))
+                          (if (= 0 (mod (first input-list) (first second-list)))
                             true
-                            (has-divisor? (rest input)))))]
-      (and (has-divisor? divisor) (all-have-divisor? (rest input-list) divisor)))))
+                            (recur (rest second-list)))))]
+      (and (has-divisor? yy) (all-have-divisor? (rest input-list) yy)))))
 
